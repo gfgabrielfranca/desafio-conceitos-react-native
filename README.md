@@ -35,7 +35,7 @@
 </p>
 
 <p align="center">
-  <img alt="Frontend" src=".github/print.png" heigth="428px">
+  <img alt="Frontend" src=".github/print.png" height="428px">
 </p>
 
 ## :rocket: Technologies
