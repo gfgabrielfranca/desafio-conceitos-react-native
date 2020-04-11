@@ -8,6 +8,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
 
 import api from "./services/api";
 
@@ -32,13 +33,18 @@ export default function App() {
 
   return (
     <>
-      <StatusBar barStyle="light-content" backgroundColor="#7159c1" />
+      <StatusBar barStyle="light-content" backgroundColor="#23282f" />
       <SafeAreaView style={styles.container}>
         <FlatList
           data={repositories}
           keyExtractor={(repository) => repository.id}
-          renderItem={({ item: repository }) => (
-            <View style={styles.repositoryContainer}>
+          renderItem={({ index, item: repository }) => (
+            <View
+              style={{
+                ...styles.repositoryContainer,
+                marginTop: index === 0 ? 15 : 0,
+              }}
+            >
               <Text style={styles.repository}>{repository.title}</Text>
 
               <View style={styles.techsContainer}>
@@ -50,6 +56,14 @@ export default function App() {
               </View>
 
               <View style={styles.likesContainer}>
+                <TouchableOpacity
+                  style={styles.button}
+                  onPress={() => handleLikeRepository(repository.id)}
+                  testID={`like-button-${repository.id}`}
+                >
+                  <Icon name="heart" color="#d95347" size={18} />
+                </TouchableOpacity>
+
                 <Text
                   style={styles.likeText}
                   testID={`repository-likes-${repository.id}`}
@@ -57,14 +71,6 @@ export default function App() {
                   {repository.likes} curtidas
                 </Text>
               </View>
-
-              <TouchableOpacity
-                style={styles.button}
-                onPress={() => handleLikeRepository(repository.id)}
-                testID={`like-button-${repository.id}`}
-              >
-                <Text style={styles.buttonText}>Curtir</Text>
-              </TouchableOpacity>
             </View>
           )}
         />
@@ -76,17 +82,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#7159c1",
+    backgroundColor: "#23282f",
   },
   repositoryContainer: {
     marginBottom: 15,
     marginHorizontal: 15,
-    backgroundColor: "#fff",
+    backgroundColor: "#2e353d",
     padding: 20,
   },
   repository: {
-    fontSize: 32,
-    fontWeight: "bold",
+    fontSize: 24,
+    fontWeight: "500",
+    color: "#fff",
   },
   techsContainer: {
     flexDirection: "row",
@@ -94,9 +101,9 @@ const styles = StyleSheet.create({
   },
   tech: {
     fontSize: 12,
-    fontWeight: "bold",
+    fontWeight: "500",
     marginRight: 10,
-    backgroundColor: "#04d361",
+    backgroundColor: "#7159c1",
     paddingHorizontal: 10,
     paddingVertical: 5,
     color: "#fff",
@@ -104,22 +111,15 @@ const styles = StyleSheet.create({
   likesContainer: {
     marginTop: 15,
     flexDirection: "row",
-    justifyContent: "space-between",
+    alignItems: "center",
   },
   likeText: {
     fontSize: 14,
-    fontWeight: "bold",
-    marginRight: 10,
-  },
-  button: {
-    marginTop: 10,
-  },
-  buttonText: {
-    fontSize: 14,
-    fontWeight: "bold",
+    fontWeight: "500",
     marginRight: 10,
     color: "#fff",
-    backgroundColor: "#7159c1",
-    padding: 15,
+  },
+  button: {
+    marginRight: 8,
   },
 });
