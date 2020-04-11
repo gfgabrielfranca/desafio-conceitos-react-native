@@ -40,11 +40,11 @@
 
 ## :rocket: Technologies
 
-This project was developed based on the challenge about react Native Concepts in the GoStack by [Rocketseat](https://rocketseat.com.br/) with the following technologies:
+This project was developed based on the challenge about React Native Concepts in the GoStack by [Rocketseat](https://rocketseat.com.br/) with the following technologies:
 
 - [React Native](https://reactnative.dev/)
 - [Axios](https://github.com/axios/axios)
-- [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons)
+- [React Native Vector Icons](https://github.com/oblador/react-native-vector-icons#readme)
 - [Jest](https://jestjs.io/)
 
 ## :memo: License
