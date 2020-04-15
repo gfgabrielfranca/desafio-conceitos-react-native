@@ -1,5 +1,5 @@
 <p align="center">
-  <img alt="Be The Hero" src=".github/background.png" />
+  <img alt="conceitos react native" src=".github/background.png" />
 </p>
 
 <h4 align="center">
